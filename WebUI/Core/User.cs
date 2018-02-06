@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace WebUI.Models
+namespace WebUI
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class User : IdentityUser
@@ -24,38 +23,5 @@ namespace WebUI.Models
         public DateTime? CreatedDate { get; set; }
         public string LastUpdatedBy { get; set; }
         public DateTime? LastUpdatedDate { get; set; }
-    }
-
-    public class PersonifyDbContext : IdentityDbContext<User>
-    {
-        public PersonifyDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
-        {
-        }
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-
-            modelBuilder.Entity<User>()
-                .ToTable("Users");
-
-            modelBuilder.Entity<IdentityRole>()
-                .ToTable("Roles");
-
-            modelBuilder.Entity<IdentityUserRole>()
-                .ToTable("UserRoles");
-
-            modelBuilder.Entity<IdentityUserClaim>()
-                .ToTable("UserClaims");
-
-            modelBuilder.Entity<IdentityUserLogin>()
-                .ToTable("UserLogins");
-        }
-
-        public static PersonifyDbContext Create()
-        {
-            return new PersonifyDbContext();
-        }
     }
 }

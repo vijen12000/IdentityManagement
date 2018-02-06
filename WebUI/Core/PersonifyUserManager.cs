@@ -7,24 +7,23 @@ using WebUI.Models;
 
 namespace WebUI
 {
-    public class PersonifyUserManager : UserManager<User>
+    public class UserService : UserManager<User>
     {
-        public PersonifyUserManager(IUserStore<User> store)
+        public UserService(IUserStore<User> store)
             : base(store)
         {
         }
 
-        public static PersonifyUserManager Create(IdentityFactoryOptions<PersonifyUserManager> options, IOwinContext context) 
+        public static UserService Create(IdentityFactoryOptions<UserService> options, IOwinContext context) 
         {
-            var manager = new PersonifyUserManager(new UserStore<User>(context.Get<PersonifyDbContext>()));
-            // Configure validation logic for usernames
+            var manager = new UserService(new UserStore<User>(context.Get<IdentityDbContext>()));
+
             manager.UserValidator = new UserValidator<User>(manager)
             {
                 AllowOnlyAlphanumericUserNames = false,
                 RequireUniqueEmail = true
             };
-
-            // Configure validation logic for passwords
+            
             manager.PasswordValidator = new PasswordValidator
             {
                 RequiredLength = 6,
@@ -33,8 +32,7 @@ namespace WebUI
                 RequireLowercase = true,
                 RequireUppercase = true,
             };
-
-            // Configure user lockout defaults
+            
             manager.UserLockoutEnabledByDefault = true;
             manager.DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(5);
             manager.MaxFailedAccessAttemptsBeforeLockout = 5;

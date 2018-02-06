@@ -12,21 +12,21 @@ using WebUI.Models;
 namespace WebUI
 {
     // Configure the application sign-in manager which is used in this application.
-    public class PersonifySignInManager : SignInManager<User, string>
+    public class SignInService : SignInManager<User, string>
     {
-        public PersonifySignInManager(PersonifyUserManager userManager, IAuthenticationManager authenticationManager)
+        public SignInService(UserService userManager, IAuthenticationManager authenticationManager)
             : base(userManager, authenticationManager)
         {
         }
 
         public override Task<ClaimsIdentity> CreateUserIdentityAsync(User user)
         {
-            return user.GenerateUserIdentityAsync((PersonifyUserManager)UserManager);
+            return user.GenerateUserIdentityAsync((UserService)UserManager);
         }
 
-        public static PersonifySignInManager Create(IdentityFactoryOptions<PersonifySignInManager> options, IOwinContext context)
+        public static SignInService Create(IdentityFactoryOptions<SignInService> options, IOwinContext context)
         {
-            return new PersonifySignInManager(context.GetUserManager<PersonifyUserManager>(), context.Authentication);
+            return new SignInService(context.GetUserManager<UserService>(), context.Authentication);
         }
     }
 }
