@@ -2,7 +2,7 @@
 
 namespace WebUI.Models
 {
-    public class RegisterViewModel
+    public class CreateUserViewModel
     {
         [Required]
         [EmailAddress]
