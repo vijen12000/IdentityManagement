@@ -1,0 +1,16 @@
+﻿@model WebUI._1._0.Models.CreateModel
+@{
+    ViewBag.Title = "Create";
+}
+<h2>Create User</h2>
+<hr />
+@using (Html.BeginForm("Create", "User", FormMethod.Post))
+{
+    @Html.ValidationSummary()
+    @Html.LabelFor(m => m.UserName) @Html.TextBoxFor(m => m.UserName)
+    <br>
+    @Html.LabelFor(m => m.Password) @Html.PasswordFor(m => m.Password)
+    <br>
+    <input class="btn" type="submit" value="Save"/>
+}
+
