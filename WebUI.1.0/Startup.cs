@@ -17,7 +17,8 @@ namespace WebUI._1._0
     {
         public void Configuration(IAppBuilder app)
         {
-            const string connectionString= @"Data Source=.\SQLEXPRESS;Initial Catalog=Identity.1.0;User Id=sa;Password=Password@1";
+            //const string connectionString= @"Data Source=.\SQLEXPRESS;Initial Catalog=Identity.1.1;User Id=sa;Password=Password@1";
+            const string connectionString = @"Data Source=DESKTOP-GOTU4FQ;Initial Catalog=Identity.1.1;User Id=sa;Password=password@1";
             //app.CreatePerOwinContext(() => new IdentityDbContext(connectionString));
             app.CreatePerOwinContext(() => new ExtendedUserContext(connectionString));
 

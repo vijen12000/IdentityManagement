@@ -6,13 +6,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using WebUI._1._0.Core.Model;
 using WebUI._1._0.Models;
 
 namespace WebUI._1._0.Controllers
 {
     public class AuthController : Controller
     {
-        public SignInManager<IdentityUser, string> signInManager => HttpContext.GetOwinContext().Get<SignInManager<IdentityUser, string>>();
+        public SignInManager<ExtendedUser, string> signInManager => HttpContext.GetOwinContext().Get<SignInManager<ExtendedUser, string>>();
             
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)

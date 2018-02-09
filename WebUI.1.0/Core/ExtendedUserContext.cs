@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
@@ -9,7 +10,7 @@ using WebUI._1._0.Core.Model;
 
 namespace WebUI._1._0.Core
 {
-    public class ExtendedUserContext:DbContext
+    public class ExtendedUserContext:IdentityDbContext<ExtendedUser>
     {
         public ExtendedUserContext(string connectionStrng):base(connectionStrng)
         {

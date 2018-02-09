@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Identity.Data.DbContext" Collapsed="true">
+    <Position X="10.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEABACAAACUCAAAgAAAIAABAAEgBAAAAAAABBEA=</HashCode>
+      <FileName>Data\DbContext.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Identity.Data.UnitOfWorkFactory">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\UnitOfWorkFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Identity.Entities.IdentityLogin&lt;TKey&gt;" Collapsed="true">
+    <Position X="10" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAEAAAABAAAAAAAAA=</HashCode>
+      <FileName>Entities\IdentityLogin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Identity.Entities.IdentityRole" Collapsed="true">
+    <Position X="5.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\IdentityRole.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Identity.Entities.IdentityRole&lt;TKey&gt;" Collapsed="true">
+    <Position X="5.5" Y="0.5" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\IdentityRole.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Identity.Entities.IdentityRole&lt;TKey, TUserRole, TRoleClaim&gt;">
+    <Position X="2.25" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAACACAAAAAAAAAAAAAAAAQAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\IdentityRole.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Identity.Entities.IdentityRoleClaim&lt;TKey&gt;" Collapsed="true">
+    <Position X="10" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACEAIAAAAAAAACQAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Entities\IdentityRoleClaim.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Identity.Entities.IdentityUser" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\IdentityUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Identity.Entities.IdentityUser&lt;TKey&gt;" Collapsed="true">
+    <Position X="0.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\IdentityUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Identity.Entities.IdentityUser&lt;TKey, TUserClaim, TUserRole, TUserLogin&gt;" Collapsed="true">
+    <Position X="0.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACCIAAAACAAIEAEAAAAQAABAgAAAAAIAQQQABAAAQA=</HashCode>
+      <FileName>Entities\IdentityUser.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Identity.Entities.IdentityUserClaim&lt;TKey&gt;" Collapsed="true">
+    <Position X="2.25" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACEAAAAAAAAAACQAAAAAgAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Entities\IdentityUserClaim.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Identity.Entities.IdentityUserRole&lt;TKey&gt;" Collapsed="true">
+    <Position X="10" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\IdentityUserRole.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Identity.Repositories.RoleRepository&lt;TKey, TRole, TUserRole, TRoleClaim&gt;" Collapsed="true">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAABAAAAAAABAAAAAAAAAAAAAAAAAAAAIg=</HashCode>
+      <FileName>Repositories\RoleRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Identity.Repositories.UserRepository&lt;TKey, TUser, TUserRole, TRoleClaim&gt;">
+    <Position X="4.25" Y="5.75" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAWAACAAABAICAAIRBAgAAACAIAAABgIAACAQAIg=</HashCode>
+      <FileName>Repositories\UserRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Identity.Stores.RoleStore&lt;TKey, TRole, TUserRole, TRoleClaim&gt;">
+    <Position X="7.5" Y="1.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABACAAIAAAAAAAIAAAAAAACAgCEAABAIgQAIA=</HashCode>
+      <FileName>Stores\RoleStore.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Identity.Stores.UserStore&lt;TKey, TUser, TUserRole, TRoleClaim&gt;">
+    <Position X="8.5" Y="5.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>BaQACiSiAKABAMxBDMZAYAAkCAAACAyiFAQA4IgggPo=</HashCode>
+      <FileName>Stores\UserStore.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Identity.Core.UnitOfWork" Collapsed="true">
+    <Position X="2.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAACAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UnitOfWork\UnitOfWork.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Identity.Data.IContext" Collapsed="true">
+    <Position X="10.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEABAAAAAAACAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\IContext.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Identity.Repositories.IRoleRepository&lt;TKey, TRole, TUserRole, TRoleClaim&gt;">
+    <Position X="5.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAIg=</HashCode>
+      <FileName>Repositories\IRoleRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Identity.Repositories.IUserRepository&lt;TKey, TUser, TUserRole, TRoleClaim&gt;" Collapsed="true">
+    <Position X="5.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAWAACAAAAAICAAIRBAgAAACAIAAABgIAACAAAIg=</HashCode>
+      <FileName>Repositories\IUserRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Identity.Core.IUnitOfWork" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UnitOfWork\IUnitOfWork.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Identity.Core.IUnitOfWorkFactory" Collapsed="true">
+    <Position X="2.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>UnitOfWork\IUnitOfWorkFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Microsoft.AspNet.Identity.IUserLockoutStore&lt;TUser, TKey&gt;" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

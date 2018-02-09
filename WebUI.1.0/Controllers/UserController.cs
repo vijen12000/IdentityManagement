@@ -8,12 +8,14 @@ using System.Web;
 using System.Web.Mvc;
 using WebUI._1._0.Models;
 using System.Threading.Tasks;
+using WebUI._1._0.Core.Model;
 
 namespace WebUI._1._0.Controllers
 {
     public class UserController : Controller
     {
-        public UserManager<IdentityUser> userManager => HttpContext.GetOwinContext().Get<UserManager<IdentityUser>>();
+        //public UserManager<IdentityUser> userManager => HttpContext.GetOwinContext().Get<UserManager<IdentityUser>>();
+        public UserManager<ExtendedUser> userManager => HttpContext.GetOwinContext().Get<UserManager<ExtendedUser>>();
 
         public UserController()
         {
@@ -38,7 +40,20 @@ namespace WebUI._1._0.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            var result = await userManager.CreateAsync(new IdentityUser(model.UserName), model.Password);
+
+            var user = new ExtendedUser
+            {
+                UserName=model.UserName,
+                FullName=model.FullName
+            };
+            user.Addresses.Add(new Address
+            {
+                AddressLine=model.AddressLine,
+                Country = model.Country,
+                UserId = user.Id                
+            });
+
+            var result = await userManager.CreateAsync(user, model.Password);
             if (result.Succeeded) return RedirectToAction("Index", "Home");
             ModelState.AddModelError("", result.Errors.FirstOrDefault());
             return View(model);
