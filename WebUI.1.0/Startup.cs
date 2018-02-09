@@ -8,6 +8,7 @@ using Microsoft.Owin.Security.Cookies;
 using Owin;
 using WebUI._1._0.Core;
 using WebUI._1._0.Core.Model;
+using WebUI._1._0.Core.Service;
 
 [assembly: OwinStartup(typeof(WebUI._1._0.Startup))]
 
@@ -17,8 +18,8 @@ namespace WebUI._1._0
     {
         public void Configuration(IAppBuilder app)
         {
-            //const string connectionString= @"Data Source=.\SQLEXPRESS;Initial Catalog=Identity.1.1;User Id=sa;Password=Password@1";
-            const string connectionString = @"Data Source=DESKTOP-GOTU4FQ;Initial Catalog=Identity.1.1;User Id=sa;Password=password@1";
+            const string connectionString= @"Data Source=.\SQLEXPRESS;Initial Catalog=Identity.1.1;User Id=sa;Password=Password@1";
+            //const string connectionString = @"Data Source=DESKTOP-GOTU4FQ;Initial Catalog=Identity.1.1;User Id=sa;Password=password@1";
             //app.CreatePerOwinContext(() => new IdentityDbContext(connectionString));
             app.CreatePerOwinContext(() => new ExtendedUserContext(connectionString));
 
@@ -30,7 +31,14 @@ namespace WebUI._1._0
             //                (opt, cont) => new UserManager<IdentityUser>(cont.Get<UserStore<IdentityUser>>()));
 
             app.CreatePerOwinContext<UserManager<ExtendedUser>>(
-                            (opt, cont) => new UserManager<ExtendedUser>(cont.Get<UserStore<ExtendedUser>>()));
+                            (opt, cont) =>
+                                {
+                                    var userManager= new UserManager<ExtendedUser>(cont.Get<UserStore<ExtendedUser>>());
+                                    userManager.UserTokenProvider = new DataProtectorTokenProvider<ExtendedUser>(opt.DataProtectionProvider.Create());
+                                    userManager.EmailService = new EmailService();// Configure Email Service in order to send emails
+                                    return userManager;
+                                 }
+                                );
 
             //app.CreatePerOwinContext<SignInManager<IdentityUser, string>>((opt, cont) => new SignInManager<IdentityUser, string>(cont.Get<UserManager<IdentityUser>>(), cont.Authentication));
             app.CreatePerOwinContext<SignInManager<ExtendedUser, string>>((opt, cont) => new SignInManager<ExtendedUser, string>(cont.Get<UserManager<ExtendedUser>>(), cont.Authentication));
