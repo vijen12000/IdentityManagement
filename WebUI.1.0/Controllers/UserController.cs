@@ -75,24 +75,6 @@ namespace WebUI._1._0.Controllers
                 return View("Error");
             }
             return RedirectToAction("Index", "Home");
-        }
-
-        public ActionResult ForgotPassword()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public async Task<ActionResult> ForgotPassword(ForgotPasswordModel model)
-        {
-            var user = userManager.FindByEmailAsync(model.Email);
-            if (user != null)
-            {
-                var token = await userManager.GeneratePasswordResetTokenAsync(user.Id.ToString());
-                var requestUrl = Url.Action("PasswordReset", "Auth", new { userId = user.Id, token = token }, Request.Url.Scheme);
-                await userManager.SendEmailAsync(user.Id.ToString(), $"Password Reset", "Use this link to reset Password:{requestUrl}");
-            }
-            return RedirectToAction("Index", "Home");
-        }
+        }       
     }
 }

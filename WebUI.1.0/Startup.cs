@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.Google;
 using Owin;
 using WebUI._1._0.Core;
 using WebUI._1._0.Core.Model;
@@ -35,7 +36,7 @@ namespace WebUI._1._0
                                 {
                                     var userManager= new UserManager<ExtendedUser>(cont.Get<UserStore<ExtendedUser>>());
                                     userManager.UserTokenProvider = new DataProtectorTokenProvider<ExtendedUser>(opt.DataProtectionProvider.Create());
-                                    userManager.EmailService = new EmailService();// Configure Email Service in order to send emails
+                                    //userManager.EmailService = new EmailService();// Configure Email Service in order to send emails
                                     return userManager;
                                  }
                                 );
@@ -43,9 +44,18 @@ namespace WebUI._1._0
             //app.CreatePerOwinContext<SignInManager<IdentityUser, string>>((opt, cont) => new SignInManager<IdentityUser, string>(cont.Get<UserManager<IdentityUser>>(), cont.Authentication));
             app.CreatePerOwinContext<SignInManager<ExtendedUser, string>>((opt, cont) => new SignInManager<ExtendedUser, string>(cont.Get<UserManager<ExtendedUser>>(), cont.Authentication));
 
+            app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
+
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie
+            });
+
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions
+            {
+                ClientId = "",
+                ClientSecret = "",
+                Caption = "Google"
             });
         }
     }
