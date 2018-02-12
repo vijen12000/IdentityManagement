@@ -1,11 +1,11 @@
-﻿using Identity.Data;
-using Identity.Entities;
+﻿using Identity.Core;
+using Identity.Core.Entities;
+using Identity.Data;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Identity.Repositories

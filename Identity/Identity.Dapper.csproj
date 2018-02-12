@@ -48,28 +48,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\DbContext.cs" />
-    <Compile Include="Data\IContext.cs" />
     <Compile Include="Data\UnitOfWorkFactory.cs" />
-    <Compile Include="Entities\IdentityLogin.cs" />
-    <Compile Include="Entities\IdentityRole.cs" />
-    <Compile Include="Entities\IdentityRoleClaim.cs" />
-    <Compile Include="Entities\IdentityUser.cs" />
-    <Compile Include="Entities\IdentityUserClaim.cs" />
-    <Compile Include="Entities\IdentityUserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\IRoleRepository.cs" />
-    <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
-    <Compile Include="Stores\RoleStore.cs" />
-    <Compile Include="Stores\UserStore.cs" />
-    <Compile Include="UnitOfWork\IUnitOfWork.cs" />
-    <Compile Include="UnitOfWork\IUnitOfWorkFactory.cs" />
-    <Compile Include="UnitOfWork\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Identity.Core\Identity.Core.csproj">
+      <Project>{7E096CE5-5CE9-4056-A0CF-80207D4CD5DA}</Project>
+      <Name>Identity.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

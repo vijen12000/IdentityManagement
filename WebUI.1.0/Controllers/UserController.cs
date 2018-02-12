@@ -24,7 +24,9 @@ namespace WebUI._1._0.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var users = userManager.Users;
+
+            return View(users);            
         }
 
         public ActionResult Create()

@@ -1,5 +1,6 @@
-﻿using Identity.Data;
-using Identity.Entities;
+﻿using Identity.Core;
+using Identity.Core.Entities;
+using Identity.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;

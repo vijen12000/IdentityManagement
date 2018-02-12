@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Identity.Entities
+namespace Identity.Core.Entities
 {
     public class IdentityLogin<TKey> where TKey : IEquatable<TKey>
     {

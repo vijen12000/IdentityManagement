@@ -19,7 +19,7 @@ namespace WebUI._1._0
     {
         public void Configuration(IAppBuilder app)
         {
-            const string connectionString= @"Data Source=.\SQLEXPRESS;Initial Catalog=Identity.1.1;User Id=sa;Password=Password@1";
+            const string connectionString= @"Data Source=.\SQLEXPRESS;Initial Catalog=Identity.1.2;User Id=sa;Password=Password@1";
             //const string connectionString = @"Data Source=DESKTOP-GOTU4FQ;Initial Catalog=Identity.1.1;User Id=sa;Password=password@1";
             //app.CreatePerOwinContext(() => new IdentityDbContext(connectionString));
             app.CreatePerOwinContext(() => new ExtendedUserContext(connectionString));
@@ -44,19 +44,19 @@ namespace WebUI._1._0
             //app.CreatePerOwinContext<SignInManager<IdentityUser, string>>((opt, cont) => new SignInManager<IdentityUser, string>(cont.Get<UserManager<IdentityUser>>(), cont.Authentication));
             app.CreatePerOwinContext<SignInManager<ExtendedUser, string>>((opt, cont) => new SignInManager<ExtendedUser, string>(cont.Get<UserManager<ExtendedUser>>(), cont.Authentication));
 
-            app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
+            //app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie
             });
 
-            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions
-            {
-                ClientId = "",
-                ClientSecret = "",
-                Caption = "Google"
-            });
+            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions
+            //{
+            //    ClientId = "",
+            //    ClientSecret = "",
+            //    Caption = "Google"
+            //});
         }
     }
 }

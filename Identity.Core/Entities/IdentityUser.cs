@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Identity.Entities
+namespace Identity.Core.Entities
 {
     public class IdentityUser : IdentityUser<int>
     {

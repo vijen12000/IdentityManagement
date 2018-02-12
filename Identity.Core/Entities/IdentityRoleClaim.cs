@@ -5,7 +5,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Identity.Entities
+namespace Identity.Core.Entities
 {
     public class IdentityRoleClaim<TKey> where TKey : IEquatable<TKey>
     {

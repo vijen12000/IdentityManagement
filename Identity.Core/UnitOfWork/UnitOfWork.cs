@@ -1,4 +1,4 @@
-﻿using Identity.Data;
+﻿using Identity.Core.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;

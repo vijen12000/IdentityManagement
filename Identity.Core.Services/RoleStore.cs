@@ -1,15 +1,9 @@
-﻿using Identity.Data;
-using Identity.Entities;
-using Identity.Repositories;
+﻿using Identity.Core.Entities;
 using Microsoft.AspNet.Identity;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
-namespace Identity.Stores
+namespace Identity.Core.Services
 {
     public class RoleStore<TKey, TRole, TUserRole, TRoleClaim>
         : IRoleStore<TRole, TKey>
@@ -18,11 +12,9 @@ namespace Identity.Stores
         where TUserRole : IdentityUserRole<TKey>
         where TRoleClaim : IdentityRoleClaim<TKey>
     {
-        private readonly RoleRepository<TKey, TRole, TUserRole, TRoleClaim> _roleRepository;
-        private readonly UnitOfWorkFactory _uowFactory;
-
-        public RoleStore(RoleRepository<TKey, TRole, TUserRole, TRoleClaim> roleRepository,
-            UnitOfWorkFactory uowFactory)
+        private readonly IRoleRepository<TKey, TRole, TUserRole, TRoleClaim> _roleRepository;
+        private readonly IUnitOfWorkFactory _uowFactory;
+        public RoleStore(IRoleRepository<TKey, TRole, TUserRole, TRoleClaim> roleRepository, IUnitOfWorkFactory uowFactory)
         {
             _roleRepository = roleRepository;
             _uowFactory = uowFactory;
@@ -101,7 +93,7 @@ namespace Identity.Stores
                 return result;
             }
             catch (Exception ex)
-            {               
+            {
                 return null;
             }
         }

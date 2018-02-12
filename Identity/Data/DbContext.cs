@@ -1,13 +1,10 @@
 ﻿using Dapper;
+using Identity.Core.Data;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.Common;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Identity.Data
@@ -17,8 +14,7 @@ namespace Identity.Data
         public DbContext()
         {
             _connection = CreateConnection();
-            _connection.Open();
-            DebugPrint("Connection started.");
+            _connection.Open();            
         }
 
         private bool _isTransactionStarted;
@@ -27,21 +23,13 @@ namespace Identity.Data
         private int? _commandTimeout = null;
 
         public bool IsTransactionStarted => _isTransactionStarted;
-             
-        private void DebugPrint(string message)
-        {
-#if DEBUG
-            Debug.Print(">>>UnitOfWorkDapper - Thread {0} : {1}", Thread.CurrentThread.ManagedThreadId, message);
-#endif
-        }
-
+                     
         public void BeginTransaction()
         {
             if (_isTransactionStarted)
                 throw new InvalidOperationException("Transaction is already started.");
             _transaction = _connection.BeginTransaction();
-            _isTransactionStarted = true;
-            DebugPrint("Transaction started.");
+            _isTransactionStarted = true;            
         }
 
         public void Commit()
@@ -52,9 +40,7 @@ namespace Identity.Data
             _transaction.Commit();
             _transaction = null;
 
-            _isTransactionStarted = false;
-
-            DebugPrint("Transaction commintted.");
+            _isTransactionStarted = false;            
         }
 
         public void Rollback()
@@ -65,9 +51,7 @@ namespace Identity.Data
             _transaction.Rollback();
             _transaction.Dispose();
             _transaction = null;
-            _isTransactionStarted = false;
-
-            DebugPrint("Transaction rollbacked and disposed.");
+            _isTransactionStarted = false;            
         }
 
         public int Execute(string sql, object param = null, CommandType commandType = CommandType.Text)
@@ -138,9 +122,7 @@ namespace Identity.Data
 
             _connection.Close();
             _connection.Dispose();
-            _connection = null;
-
-            DebugPrint("Connection closed and disposed.");
+            _connection = null;            
         }
     }
 }

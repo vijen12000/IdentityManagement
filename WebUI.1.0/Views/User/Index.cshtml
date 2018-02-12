@@ -1,7 +1,52 @@
-﻿@{
+﻿@model IEnumerable<WebUI._1._0.Core.Model.ExtendedUser>
+@{
     ViewBag.Title = "Index";
 }
+<!-- Content Header (Page header) -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-header">
+                    <h3 class="panel-title">Users</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="panel-body table-responsive no-padding">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th style="width: 10px">#</th>
+                                <th>Name</th>
+                                <th>Title</th>
+                                <th>Department</th>
+                                <th>Email</th>
+                                <th style="width: 40px">Action</th>
+                            </tr>
+                        </thead>  
+                        <tbody>
+                            @foreach (var user in Model)
+                            {
+                            <tr>
+                                <td></td>
+                                <td>@user.FullName</td>
+                                <td>
+                                    @user.Title
+                                </td>
+                                <td>
+                                    @user.Department
+                                </td>
+                                <td>
+                                    @user.Email
+                                </td>
+                                <td>Edit</td>
+                            </tr>
+                            }                   
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>       
+        </div>
+    </div>
+    </section>
 
-<h2>Users</h2>
-
-@Html.ActionLink("Add User","Create")

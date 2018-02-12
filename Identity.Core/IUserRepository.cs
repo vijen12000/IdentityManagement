@@ -1,21 +1,19 @@
-﻿using Identity.Entities;
+﻿using Identity.Core.Entities;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
-using System.Data.Common;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
-namespace Identity.Repositories
+namespace Identity.Core
 {
     public interface IUserRepository<TKey, TUser, TUserRole, TRoleClaim>
-        where TKey : IEquatable<TKey>
-        where TUser : IdentityUser<TKey>
-        where TUserRole : IdentityUserRole<TKey>
-        where TRoleClaim : IdentityRoleClaim<TKey>
+       where TKey : IEquatable<TKey>
+       where TUser : IdentityUser<TKey>
+       where TUserRole : IdentityUserRole<TKey>
+       where TRoleClaim : IdentityRoleClaim<TKey>
     {
         void AddToRole(TKey id, string roleName);
 
