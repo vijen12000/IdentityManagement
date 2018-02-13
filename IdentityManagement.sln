@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUI", "WebUI\WebUI.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.Dapper", "Identity\Identity.Dapper.csproj", "{36421186-5067-41B7-86F8-FB2919736C1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUI.1.0", "WebUI.1.0\WebUI.1.0.csproj", "{20A41F91-FABE-4710-B75E-E5ED03322F16}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC5.Demo", "WebUI.1.0\MVC5.Demo.csproj", "{20A41F91-FABE-4710-B75E-E5ED03322F16}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.Core", "Identity.Core\Identity.Core.csproj", "{7E096CE5-5CE9-4056-A0CF-80207D4CD5DA}"
 EndProject

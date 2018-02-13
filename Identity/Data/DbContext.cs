@@ -11,10 +11,14 @@ namespace Identity.Data
 {
     public class DbContext : IContext
     {
-        public DbContext()
+        private static string _connectionString= ConfigurationManager.ConnectionStrings["Default"].ToString();
+
+        public DbContext():this(_connectionString){}
+
+        public DbContext(string connectionString)
         {
-            _connection = CreateConnection();
-            _connection.Open();            
+            _connection = CreateConnection(connectionString);
+            _connection.Open();
         }
 
         private bool _isTransactionStarted;
@@ -104,9 +108,9 @@ namespace Identity.Data
             return await SqlMapper.QueryAsync<TFirst, TSecond, TReturn>(_connection, sql, map, param, _transaction, true, splitOn, _commandTimeout, commandType);
         }
      
-        protected IDbConnection CreateConnection()
+        protected IDbConnection CreateConnection(string connectionString)
         {
-            var config = ConfigurationManager.ConnectionStrings["Default"];
+            var config =new ConnectionStringSettings("default",connectionString);
             var factory = DbProviderFactories.GetFactory(config.ProviderName);
 
             var conn = factory.CreateConnection();
