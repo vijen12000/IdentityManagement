@@ -254,7 +254,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -294,17 +296,9 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Identity.Core.Services\Identity.Core.Services.csproj">
-      <Project>{31DF4390-1D2B-4B66-B4FF-21EAC13E7759}</Project>
-      <Name>Identity.Core.Services</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Identity.Core\Identity.Core.csproj">
-      <Project>{7E096CE5-5CE9-4056-A0CF-80207D4CD5DA}</Project>
-      <Name>Identity.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Identity\Identity.Dapper.csproj">
-      <Project>{36421186-5067-41B7-86F8-FB2919736C1A}</Project>
-      <Name>Identity.Dapper</Name>
+    <ProjectReference Include="..\Identity.POC\Identity.POC.csproj">
+      <Project>{800e7346-1c79-4fc3-912f-ad13b39ab595}</Project>
+      <Name>Identity.POC</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

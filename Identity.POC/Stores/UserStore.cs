@@ -1,29 +1,32 @@
-﻿using Identity.Core.Entities;
-using Identity.Core;
+﻿using Identity.POC.Entities;
+using Identity.POC.Repositories;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 using System.Linq;
 using System.Security.Claims;
-using Identity.Data;
-using Identity.Repositories;
+using System.Text;
+using System.Threading.Tasks;
+using Identity.POC.Entities;
+using Identity.POC.Core;
+using Identity.POC.Data.Contexts;
 
-namespace Identity.Core.Services
+namespace Identity.POC.Stores
 {
     public class UserStore<TKey, TUser, TUserRole, TRoleClaim> :
-        IUserStore<TUser, TKey>,
-        IUserLoginStore<TUser, TKey>,
-        IUserRoleStore<TUser, TKey>,
-        IUserClaimStore<TUser, TKey>,
-        IUserPasswordStore<TUser, TKey>,
-        IUserSecurityStampStore<TUser, TKey>,
-        IUserEmailStore<TUser, TKey>,
+        IUserStore<TUser,TKey>,
+        IUserLoginStore<TUser,TKey>,
+        IUserRoleStore<TUser,TKey>,
+        IUserClaimStore<TUser,TKey>,
+        IUserPasswordStore<TUser,TKey>,
+        IUserSecurityStampStore<TUser,TKey>,
+        IUserEmailStore<TUser,TKey>,
         IUserLockoutStore<TUser, TKey>,
         IUserPhoneNumberStore<TUser, TKey>,
         IQueryableUserStore<TUser, TKey>,
-        IUserTwoFactorStore<TUser, TKey>        
+        IUserTwoFactorStore<TUser, TKey>
+        //,
+        //IUserAuthenticationTokenStore<TUser>
         where TKey : IEquatable<TKey>
         where TUser : IdentityUser<TKey>
         where TUserRole : IdentityUserRole<TKey>
@@ -39,11 +42,11 @@ namespace Identity.Core.Services
             _uowFactory = uowFactory;
         }
 
-        public IQueryable<TUser> Users
+        public  IQueryable<TUser> Users
         {
             get
-            {
-                return _userRepository.GetAll();
+            {                
+                return  _userRepository.GetAll();
             }
         }
 
@@ -68,7 +71,7 @@ namespace Identity.Core.Services
             }
         }
 
-        public Task AddClaimAsync(TUser user, Claim claim)
+       public  Task AddClaimAsync(TUser user, Claim claim)
         {
             var claims = new List<Claim>();
             claims.Add(claim);
@@ -280,7 +283,7 @@ namespace Identity.Core.Services
             if (user == null)
                 throw new ArgumentNullException(nameof(user));
             return Task.FromResult(user.LockoutEndDateUtc.Value);
-
+           
         }
 
         public async Task<IList<UserLoginInfo>> GetLoginsAsync(TUser user)
@@ -548,7 +551,7 @@ namespace Identity.Core.Services
             return Task.FromResult(0);
         }
 
-        public Task RemoveLoginAsync(TUser user, UserLoginInfo loginInfo)
+        public Task RemoveLoginAsync(TUser user,UserLoginInfo loginInfo)
         {
             return Task.FromResult(0);
         }

@@ -1,16 +1,21 @@
-﻿using Dapper;
-using Identity.Core.Data;
+﻿using Identity.POC.Core;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.Common;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace Identity.Data
+namespace Identity.POC.Data.Contexts
 {
-    public abstract class DbContext : DapperContext
+    public class DbContext : DapperContext
     {
+        public DbContext()
+        {
+        }
+
         protected override IDbConnection CreateConnection()
         {
             var config = ConfigurationManager.ConnectionStrings["Default"];

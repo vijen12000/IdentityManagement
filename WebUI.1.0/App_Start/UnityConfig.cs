@@ -1,11 +1,9 @@
-using Identity.Core;
-using Identity.Core.Entities;
-using Identity.Core.Services;
-using Identity.Data;
-using Identity.Repositories;
+using Identity.POC.Data.Contexts;
+using Identity.POC.Entities;
+using Identity.POC.Repositories;
+using Identity.POC.Stores;
 using Microsoft.Practices.Unity;
 using System;
-using WebUI._1._0.Core;
 using WebUI._1._0.Core.Model;
 
 namespace WebUI._1._0
@@ -27,7 +25,10 @@ namespace WebUI._1._0
         /// <summary>
         /// Configured Unity Container.
         /// </summary>
-        public static IUnityContainer Container => container.Value;
+        public static IUnityContainer GetConfiguredContainer()
+        {
+            return container.Value;
+        }
 
         #endregion
 
@@ -42,21 +43,16 @@ namespace WebUI._1._0
         /// registered.
         /// </remarks>
         public static void RegisterTypes(IUnityContainer container)
-        {            
+        {                        
             container.RegisterType<DbContext>(new PerRequestLifetimeManager());
 
-            //container.RegisterType<IAnyRepository, AnyRepository>();
-
-            container.RegisterType<IUserRepository<string, IdentityUser, IdentityUserRole<string>, IdentityRoleClaim<string>>, UserRepository<string, IdentityUser, IdentityUserRole<string>, IdentityRoleClaim<string>>>();
-
+            container.RegisterType<IUserRepository<string, IdentityUser, Identity.POC.Entities.IdentityUserRole<string>, Identity.POC.Entities.IdentityRoleClaim<string>>, 
+                                        UserRepository<string, IdentityUser, Identity.POC.Entities.IdentityUserRole<string>, Identity.POC.Entities.IdentityRoleClaim<string>>>();
             container.RegisterType<IRoleRepository<string, IdentityRole, IdentityUserRole<string>, IdentityRoleClaim<string>>, RoleRepository<string, IdentityRole, IdentityUserRole<string>, IdentityRoleClaim<string>>>();
-            container.RegisterType<IUnitOfWorkFactory, UnitOfWorkFactory>();
-            container.RegisterType<IUnitOfWork, UnitOfWork>();
-            
-            container.RegisterType<AppUserManager>(new PerRequestLifetimeManager());
-            container.RegisterType<AppSignInManager>(new PerRequestLifetimeManager());
+            container.RegisterType<Core.AppUserManager>(new PerRequestLifetimeManager());
+            container.RegisterType<Core.AppSignInManager>(new PerRequestLifetimeManager());
             container.RegisterType<UserStore<string, ExtendedUser, IdentityUserRole<string>, IdentityRoleClaim<string>>>(new PerRequestLifetimeManager());
-            container.RegisterType<RoleStore<string, IdentityRole, IdentityUserRole<string>, IdentityRoleClaim<string>>>(new PerRequestLifetimeManager());
+            container.RegisterType<RoleStore<string, IdentityRole, IdentityUserRole<string>, IdentityRoleClaim<string>>>(new PerRequestLifetimeManager());                                                                        
         }
     }
 }

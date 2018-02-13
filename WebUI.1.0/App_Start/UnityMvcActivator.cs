@@ -13,7 +13,7 @@ namespace WebUI._1._0.App_Start
         /// <summary>Integrates Unity when the application starts.</summary>
         public static void Start()
         {
-            var container = UnityConfig.Container;
+            var container = UnityConfig.GetConfiguredContainer();
 
             FilterProviders.Providers.Remove(FilterProviders.Providers.OfType<FilterAttributeFilterProvider>().First());
             FilterProviders.Providers.Add(new UnityFilterAttributeFilterProvider(container));
@@ -25,7 +25,7 @@ namespace WebUI._1._0.App_Start
         /// <summary>Disposes the Unity container when the application is shut down.</summary>
         public static void Shutdown()
         {
-            var container = UnityConfig.Container;
+            var container = UnityConfig.GetConfiguredContainer();
             container.Dispose();
         }
     }

@@ -1,5 +1,5 @@
-﻿using Identity.Core.Entities;
-using Identity.Core.Services;
+﻿using Identity.POC.Entities;
+using Identity.POC.Stores;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
@@ -23,7 +23,7 @@ namespace WebUI._1._0.Core
 
         public static AppUserManager Create(IdentityFactoryOptions<AppUserManager> options, IOwinContext context)
         {
-            var container = UnityConfig.Container;
+            var container = UnityConfig.GetConfiguredContainer();
             var userStore = container.Resolve<UserStore<string, ExtendedUser, IdentityUserRole<string>, IdentityRoleClaim<string>>>();
                         
             var manager = new AppUserManager(userStore);
@@ -71,7 +71,7 @@ namespace WebUI._1._0.Core
 
         public static AppRoleManager Create(IdentityFactoryOptions<AppRoleManager> options, IOwinContext context)
         {
-            var container = UnityConfig.Container;
+            var container = UnityConfig.GetConfiguredContainer();
             var roleStore = container.Resolve<RoleStore<string, IdentityRole, IdentityUserRole<string>, IdentityRoleClaim<string>>>();            
             return new AppRoleManager(roleStore);
         }

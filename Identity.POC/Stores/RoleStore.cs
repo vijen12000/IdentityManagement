@@ -1,11 +1,15 @@
-﻿using Identity.Core.Entities;
-using Identity.Data;
-using Identity.Repositories;
+﻿using Identity.POC.Data.Contexts;
+using Identity.POC.Entities;
+using Identity.POC.Repositories;
 using Microsoft.AspNet.Identity;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
-namespace Identity.Core.Services
+namespace Identity.POC.Stores
 {
     public class RoleStore<TKey, TRole, TUserRole, TRoleClaim>
         : IRoleStore<TRole, TKey>
