@@ -1,4 +1,6 @@
-﻿namespace Identity.Data
+﻿using Identity.Core;
+
+namespace Identity.Data
 {
     public class UnitOfWorkFactory : IUnitOfWorkFactory
     {

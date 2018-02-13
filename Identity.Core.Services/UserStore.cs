@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
 using System.Security.Claims;
+using Identity.Data;
+using Identity.Repositories;
 
 namespace Identity.Core.Services
 {
@@ -30,9 +32,18 @@ namespace Identity.Core.Services
         private readonly IUnitOfWorkFactory _uowFactory;
         private readonly IUserRepository<TKey, TUser, TUserRole, TRoleClaim> _userRepository;
 
-        public UserStore(IUserRepository<TKey, TUser, TUserRole, TRoleClaim> userRepository)
+        //public UserStore()
+        //{
+        //    //IUserRepository<TKey, TUser, TUserRole, TRoleClaim> userRepository, UnitOfWorkFactory uowFactory
+        //    this._userRepository = new UserRepository<string, IdentityUser, IdentityUserRole<string>, IdentityRoleClaim<string>>();
+        //    //this._uowFactory = uowFactory;
+        //}
+
+        public UserStore(UserRepository<TKey, TUser, TUserRole, TRoleClaim> userRepository,
+            UnitOfWorkFactory uowFactory)
         {
-            _userRepository = userRepository;            
+            _userRepository = userRepository;
+            _uowFactory = uowFactory;
         }
 
         public IQueryable<TUser> Users

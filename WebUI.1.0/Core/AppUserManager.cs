@@ -4,20 +4,18 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
+using Microsoft.Practices.Unity;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using System.Web;
 using WebUI._1._0.Core.Model;
 
 namespace WebUI._1._0.Core
 {
 
-    public class AppUserManager : UserManager<ExtendedUser, int>
+    public class AppUserManager : UserManager<ExtendedUser, string>
     {
-        public AppUserManager(IUserStore<ExtendedUser, int> store)
+        public AppUserManager(IUserStore<ExtendedUser, string> store)
             : base(store)
         {
 
@@ -25,12 +23,13 @@ namespace WebUI._1._0.Core
 
         public static AppUserManager Create(IdentityFactoryOptions<AppUserManager> options, IOwinContext context)
         {
-            var container = UnityConfig.GetConfiguredContainer();
-            var userStore = container.Resolve<UserStore<int, ExtendedUser, IdentityUserRole<int>, IdentityRoleClaim<int>>>();
+            var container = UnityConfig.Container;
+            var userStore = container.Resolve<UserStore<string, ExtendedUser, IdentityUserRole<string>, IdentityRoleClaim<string>>>();
+                        
             var manager = new AppUserManager(userStore);
 
             // Configure validation logic for usernames
-            manager.UserValidator = new UserValidator<ExtendedUser, int>(manager)
+            manager.UserValidator = new UserValidator<ExtendedUser, string>(manager)
             {
                 AllowOnlyAlphanumericUserNames = false,
                 RequireUniqueEmail = true
@@ -57,29 +56,28 @@ namespace WebUI._1._0.Core
             if (dataProtectionProvider != null)
             {
                 manager.UserTokenProvider =
-                    new DataProtectorTokenProvider<ExtendedUser, int>(dataProtectionProvider.Create("Icreon Identity Provider"));
+                    new DataProtectorTokenProvider<ExtendedUser, string>(dataProtectionProvider.Create("Icreon Identity Provider"));
             }
             return manager;
         }
     }
 
-    public class AppRoleManager : RoleManager<IdentityRole, int>
+    public class AppRoleManager : RoleManager<IdentityRole, string>
     {
-        public AppRoleManager(IRoleStore<IdentityRole, int> roleStore)
+        public AppRoleManager(IRoleStore<IdentityRole, string> roleStore)
             : base(roleStore)
         {
         }
 
         public static AppRoleManager Create(IdentityFactoryOptions<AppRoleManager> options, IOwinContext context)
         {
-            var container = UnityConfig.GetConfiguredContainer();
-            var roleStore = container.Resolve<RoleStore<int, IdentityRole, IdentityUserRole<int>, IdentityRoleClaim<int>>>();
+            var container = UnityConfig.Container;
+            var roleStore = container.Resolve<RoleStore<string, IdentityRole, IdentityUserRole<string>, IdentityRoleClaim<string>>>();            
             return new AppRoleManager(roleStore);
         }
     }
-
-    // Configure the application sign-in manager which is used in this application.
-    public class AppSignInManager : SignInManager<ExtendedUser, int>
+    
+    public class AppSignInManager : SignInManager<ExtendedUser, string>
     {
         public AppSignInManager(AppUserManager userManager, IAuthenticationManager authenticationManager)
             : base(userManager, authenticationManager)

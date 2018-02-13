@@ -17,7 +17,7 @@ namespace WebUI._1._0.Core.Model
         public string Phone { get; set; }
         public string Mobile { get; set; }        
 
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ExtendedUser, int> manager)
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ExtendedUser, string> manager)
         {            
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);         
             return userIdentity;

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Identity.Core.Entities
 {
-    public class IdentityUser : IdentityUser<int>
+    public class IdentityUser : IdentityUser<string>
     {
         public IdentityUser()
         {

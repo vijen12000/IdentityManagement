@@ -25,27 +25,27 @@ namespace Identity.Repositories
 
         public async Task<TRole> GetById(TKey id)
         {
-            return await _context.QueryFirstOrDefaultAsync<TRole>("select * from IdentityRole where id=@id", new { id = id });
+            return await _context.QueryFirstOrDefaultAsync<TRole>("select * from Roles where id=@id", new { id = id });
         }
 
         public async Task<TRole> GetByName(string roleName)
         {
-            return await _context.QueryFirstOrDefaultAsync<TRole>("select * from IdentityRole where Name like '%@id%'", new { Name = roleName });
+            return await _context.QueryFirstOrDefaultAsync<TRole>("select * from Roles where Name like '%@id%'", new { Name = roleName });
         }
 
         public void Insert(TRole role)
         {
-            _context.Execute("insert into IdentityRole values (@Name)", role);
+            _context.Execute("insert into Roles values (@Name)", role);
         }
 
         public void Remove(TKey id)
         {
-            _context.Execute("delete from IdentityRole where id=@id", new { id = id });
+            _context.Execute("delete from Roles where id=@id", new { id = id });
         }
 
         public void Update(TRole role)
         {
-            _context.Execute("update IdentityRole set name=@Name where id=@Id", role);
+            _context.Execute("update Roles set name=@Name where id=@Id", role);
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using Identity.Core.Entities;
+using Identity.Data;
+using Identity.Repositories;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Threading.Tasks;
@@ -12,14 +14,19 @@ namespace Identity.Core.Services
         where TUserRole : IdentityUserRole<TKey>
         where TRoleClaim : IdentityRoleClaim<TKey>
     {
-        private readonly IRoleRepository<TKey, TRole, TUserRole, TRoleClaim> _roleRepository;
+        private readonly IRoleRepository<TKey,TRole,TUserRole, TRoleClaim> _roleRepository;
         private readonly IUnitOfWorkFactory _uowFactory;
-        public RoleStore(IRoleRepository<TKey, TRole, TUserRole, TRoleClaim> roleRepository, IUnitOfWorkFactory uowFactory)
+        //public RoleStore(IRoleRepository<TKey, TRole, TUserRole, TRoleClaim> roleRepository, UnitOfWorkFactory uowFactory)
+        //{
+        //    this._roleRepository = roleRepository;
+        //    this._uowFactory = uowFactory;
+        //}
+
+        public RoleStore(RoleRepository<TKey, TRole, TUserRole, TRoleClaim> roleRepository, UnitOfWorkFactory uowFactory)
         {
             _roleRepository = roleRepository;
             _uowFactory = uowFactory;
         }
-
         public Task CreateAsync(TRole role)
         {
             if (role == null)
